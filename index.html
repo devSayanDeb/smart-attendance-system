@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartAttend - Bluetooth Attendance System</title>
+    <link rel="stylesheet" href="style.css">
+    <meta http-equiv="Permissions-Policy" content="bluetooth=*">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M12 12L2 7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M12 12L22 7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M12 12V22" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="brand-text">SmartAttend</span>
+                </div>
+                <!-- Removed nav-menu and nav-toggle since we don't need them -->
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        Smart Bluetooth<br>
+                        <span class="hero-gradient">Attendance System</span>
+                    </h1>
+                    <p class="hero-description">
+                        Revolutionary attendance tracking using Bluetooth technology. 
+                        Secure, fast, and proxy-proof attendance management for modern classrooms.
+                    </p>
+                    
+                    <div class="hero-buttons">
+                        <a href="teacher.html" class="btn btn-primary">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            Teacher Portal
+                        </a>
+                        <a href="student.html" class="btn btn-secondary">
+                            <i class="fas fa-user-graduate"></i>
+                            Student Portal
+                        </a>
+                    </div>
+
+                    <div class="hero-features">
+                        <div class="feature-badge">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Proxy-Proof</span>
+                        </div>
+                        <div class="feature-badge">
+                            <i class="fas fa-clock"></i>
+                            <span>Real-time</span>
+                        </div>
+                        <div class="feature-badge">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Mobile First</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="demo-container">
+                        <div class="demo-window">
+                            <div class="demo-header">
+                                <div class="demo-dots">
+                                    <span class="dot red"></span>
+                                    <span class="dot yellow"></span>
+                                    <span class="dot green"></span>
+                                </div>
+                                <span class="demo-title">Bluetooth Connection</span>
+                            </div>
+                            <div class="demo-content">
+                                <div class="bluetooth-demo">
+                                    <div class="bluetooth-icon">
+                                        <i class="fab fa-bluetooth-b"></i>
+                                    </div>
+                                    <div class="connection-rings">
+                                        <div class="ring"></div>
+                                        <div class="ring"></div>
+                                        <div class="ring"></div>
+                                    </div>
+                                </div>
+                                <div class="demo-text">
+                                    <div class="demo-line active"></div>
+                                    <div class="demo-line"></div>
+                                    <div class="demo-line"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features" id="features">
+            <div class="container">
+                <h2 class="section-title">How it works</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bluetooth-b"></i>
+                        </div>
+                        <h3>Bluetooth Connection</h3>
+                        <p>Students connect to teacher's device via Bluetooth when in classroom range</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-key"></i>
+                        </div>
+                        <h3>OTP Generation</h3>
+                        <p>Unique time-limited OTP sent to each connected student device</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3>Attendance Marking</h3>
+                        <p>Students submit roll number and OTP to mark attendance automatically</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M12 12L2 7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M12 12L22 7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M12 12V22" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                    </svg>
+                    <span>SmartAttend</span>
+                </div>
+                <p class="footer-text">Built with modern web technologies for seamless attendance tracking.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

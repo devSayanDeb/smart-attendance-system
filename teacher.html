@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard - SmartAttend</title>
+    <link rel="stylesheet" href="style.css">
+    <meta http-equiv="Permissions-Policy" content="bluetooth=*">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="header-container">
+            <div class="header-left">
+                <a href="index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <div class="header-brand">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M12 12L2 7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M12 12L22 7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M12 12V22" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                    </svg>
+                    <span>SmartAttend</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="user-menu">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <span class="user-name">Teacher</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <div class="dashboard-container">
+            <div class="dashboard-header-section">
+                <h1 class="dashboard-title">Teacher Dashboard</h1>
+                <p class="dashboard-subtitle">Start and manage attendance sessions</p>
+            </div>
+
+            <!-- Session Setup -->
+            <div class="card" id="sessionSetup">
+                <div class="card-header">
+                    <h2 class="card-title">Start New Session</h2>
+                    <p class="card-description">Configure your attendance session</p>
+                </div>
+                
+                <form id="teacherForm" class="form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label" for="teacherName">
+                                <i class="fas fa-user-tie form-icon"></i>
+                                Teacher Name
+                            </label>
+                            <select id="teacherName" class="form-select" required>
+                                <option value="">Select Teacher</option>
+                                <option value="Dr. Smith">Dr. Smith</option>
+                                <option value="Prof. Johnson">Prof. Johnson</option>
+                                <option value="Mr. Davis">Mr. Davis</option>
+                                <option value="Ms. Wilson">Ms. Wilson</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="className">
+                                <i class="fas fa-book form-icon"></i>
+                                Subject
+                            </label>
+                            <select id="className" class="form-select" required>
+                                <option value="">Select Subject</option>
+                                <option value="Mathematics">Mathematics</option>
+                                <option value="Physics">Physics</option>
+                                <option value="Chemistry">Chemistry</option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Biology">Biology</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="period">
+                                <i class="fas fa-clock form-icon"></i>
+                                Period
+                            </label>
+                            <select id="period" class="form-select" required>
+                                <option value="">Select Period</option>
+                                <option value="1">Period 1 (9:00-10:00)</option>
+                                <option value="2">Period 2 (10:00-11:00)</option>
+                                <option value="3">Period 3 (11:00-12:00)</option>
+                                <option value="4">Period 4 (12:00-13:00)</option>
+                                <option value="5">Period 5 (14:00-15:00)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="roomNumber">
+                                <i class="fas fa-door-open form-icon"></i>
+                                Room Number
+                            </label>
+                            <input type="text" id="roomNumber" class="form-input" placeholder="e.g., Room 101" required>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-large">
+                        <i class="fas fa-play"></i>
+                        Start Session
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Active Session -->
+            <div class="card active-session hidden" id="activeSession">
+                <div class="card-header">
+                    <div class="session-status">
+                        <div class="status-dot active"></div>
+                        <div>
+                            <h2 class="card-title">Session Active</h2>
+                            <p class="card-description">Session ID: <span id="sessionId">-</span></p>
+                        </div>
+                    </div>
+                    <button id="endSession" class="btn btn-danger">
+                        <i class="fas fa-stop"></i>
+                        End Session
+                    </button>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="connectedCount">0</div>
+                            <div class="stat-label">Connected Students</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="sessionDuration">00:00</div>
+                            <div class="stat-label">Duration</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-bluetooth-b"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="bluetoothStatus">Active</div>
+                            <div class="stat-label">Bluetooth Status</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="activity-section">
+                    <h3 class="section-subtitle">Recent Activity</h3>
+                    <div class="activity-log" id="activityLog">
+                        <div class="activity-item">
+                            <div class="activity-time">10:15 AM</div>
+                            <div class="activity-message">Session started</div>
+                            <div class="activity-status success">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>

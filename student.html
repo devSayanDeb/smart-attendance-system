@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal - SmartAttend</title>
+    <link rel="stylesheet" href="style.css">
+    <meta http-equiv="Permissions-Policy" content="bluetooth=*">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="header-container">
+            <div class="header-left">
+                <a href="index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <div class="header-brand">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M12 12L2 7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M12 12L22 7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M12 12V22" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                    </svg>
+                    <span>SmartAttend</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="connection-indicator" id="connectionIndicator">
+                    <div class="indicator-dot"></div>
+                    <span>Ready to Connect</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <div class="dashboard-container">
+            <div class="dashboard-header-section">
+                <h1 class="dashboard-title">Student Portal</h1>
+                <p class="dashboard-subtitle">Connect via Bluetooth to mark your attendance</p>
+            </div>
+
+            <!-- Connection Status -->
+            <div class="status-banner" id="statusBanner">
+                <div class="status-icon">
+                    <i class="fas fa-bluetooth-b"></i>
+                </div>
+                <div class="status-content">
+                    <h3 class="status-title">Ready to Connect</h3>
+                    <p class="status-description">Make sure you're in the classroom and Bluetooth is enabled</p>
+                </div>
+            </div>
+
+            <!-- Scan Section -->
+            <div class="card" id="scanSection">
+                <div class="card-header">
+                    <h2 class="card-title">Connect to Class Session</h2>
+                    <p class="card-description">Scan for your teacher's device to begin</p>
+                </div>
+                
+                <div class="scan-container">
+                    <div class="scan-visual">
+                        <div class="scan-circle">
+                            <div class="scan-pulse"></div>
+                            <div class="scan-icon">
+                                <i class="fas fa-bluetooth-b"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button id="scanBluetooth" class="btn btn-primary btn-large">
+                        <i class="fas fa-search"></i>
+                        Scan for Teacher Device
+                    </button>
+                    
+                    <div class="scan-tips">
+                        <div class="tip">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Stay within classroom range</span>
+                        </div>
+                        <div class="tip">
+                            <i class="fas fa-bluetooth-b"></i>
+                            <span>Ensure Bluetooth is enabled</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attendance Form -->
+            <div class="card hidden" id="attendanceForm">
+                <div class="card-header">
+                    <div class="success-badge">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Connected Successfully</span>
+                    </div>
+                </div>
+                
+                <div class="session-info">
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <i class="fas fa-book"></i>
+                            <div class="info-content">
+                                <span class="info-label">Subject</span>
+                                <span class="info-value" id="sessionClass">-</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-user-tie"></i>
+                            <div class="info-content">
+                                <span class="info-label">Teacher</span>
+                                <span class="info-value" id="sessionTeacher">-</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <div class="info-content">
+                                <span class="info-label">Time</span>
+                                <span class="info-value" id="sessionTime">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <form id="attendanceSubmission" class="form">
+                    <div class="form-group">
+                        <label class="form-label" for="studentRoll">
+                            <i class="fas fa-id-card form-icon"></i>
+                            Roll Number
+                        </label>
+                        <input type="text" id="studentRoll" class="form-input" placeholder="Enter your roll number" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="receivedOTP">
+                            <i class="fas fa-key form-icon"></i>
+                            One-Time Password
+                        </label>
+                        <input type="text" id="receivedOTP" class="form-input otp-input" placeholder="OTP will appear here automatically" readonly>
+                        <div class="otp-timer" id="otpTimer">
+                            <i class="fas fa-hourglass-half"></i>
+                            <span>Valid for: <span id="timerCount">--</span>s</span>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-success btn-large">
+                        <i class="fas fa-check"></i>
+                        Mark Attendance
+                    </button>
+                </form>
+            </div>
+
+            <!-- Status Message -->
+            <div class="alert hidden" id="alertMessage">
+                <div class="alert-content">
+                    <i class="fas fa-info-circle alert-icon"></i>
+                    <span class="alert-text" id="alertText">Status message</span>
+                </div>
+                <button class="alert-close" onclick="this.parentElement.classList.add('hidden')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>
